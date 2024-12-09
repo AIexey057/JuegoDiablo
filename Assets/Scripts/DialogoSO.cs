@@ -10,7 +10,7 @@ public class DialogoSO : ScriptableObject
     [TextArea]
     public string[] frases;
     
-    public int tiempoLetras;
+    public float tiempoLetras;
     // Start is called before the first frame update
     void Start()
     {

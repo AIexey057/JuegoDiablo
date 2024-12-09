@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Dialogo1
   m_EditorClassIdentifier: 
   frases:
-  - "Hi there traveler! Be careful i\xB4ve heard that a creepy monster is waiting
-    at the end of the dungeon"
-  - I can tech you a few things of this dungeon, im a complete master of it(But i
-    wasnt able to pass it)
-  - 
-  tiempoLetras: 0
+  - Hi there traveler! I can teach you a few things of this dungeon, im a very skilled
+    dungeoner.
+  - I have heard that a creepy monster is waiting at the end of the dungeon, but
+    i can asure you that i will be the one who defeat him.
+  - If I were you, I will get some gear before enter deep in the dungeon, the further
+    you get the harder it gets.
+  tiempoLetras: 0.02
