@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,11 +7,13 @@ using UnityEngine.AI;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float distanciaInteraccion;
+    [SerializeField] private float duracion;
     
     private Camera cam;
     
     private Transform ultimoClick;
     private NavMeshAgent agent;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
             agent.stoppingDistance = distanciaInteraccion;
             if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
             {
+                //transform.DOLookAt(npc.transform.position,duracion, AxisConstraint.Y).OnComplete( ()=> LanzarInteraccion(npc));
                 npc.Interactuar(this.transform);
                 ultimoClick = null;
             }
@@ -39,6 +43,10 @@ public class Player : MonoBehaviour
         {
             agent.stoppingDistance = 0f;
         }
+    }
+    private void LanzarInteraccion(NPC npc)
+    {
+        
     }
     private void Movimiento()
     {

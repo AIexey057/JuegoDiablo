@@ -11,6 +11,7 @@ public class NPC : MonoBehaviour
     [SerializeField] Texture2D CursorPorDefecto;
     [SerializeField] private float tiempoDuracion;
     [SerializeField] private DialogoSO dialogo;
+    [SerializeField] private Transform cameraPoint;
     
     // Start is called before the first frame update
     private void Awake()
@@ -23,7 +24,7 @@ public class NPC : MonoBehaviour
    public void Interactuar(Transform interactuador)
     {
 
-        transform.DOLookAt(interactuador.position, tiempoDuracion, AxisConstraint.Y).OnComplete( ()=> SistemaDeDialogos.sistema.IniciarDialogo(dialogo));
+        transform.DOLookAt(interactuador.position, tiempoDuracion, AxisConstraint.Y).OnComplete( ()=> SistemaDeDialogos.sistema.IniciarDialogo(dialogo, cameraPoint));//Ctr y click para ir al metodo
         
         
     }
