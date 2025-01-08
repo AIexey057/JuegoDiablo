@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemigo : MonoBehaviour
+public class SistemaPatrulla : MonoBehaviour
 {
+    [SerializeField] private Enemigo main;
+
     [SerializeField] private Transform ruta;
 
-    private NavMeshAgent agent;
+    [SerializeField] private NavMeshAgent agent;
 
     List<Vector3> listadoPuntos = new List<Vector3>();//tiene longitud variable pero un array es fijo no lo puedes cambiar
     private Vector3 destinoActual;
@@ -19,19 +21,31 @@ public class Enemigo : MonoBehaviour
             listadoPuntos.Add(punto);
         }
         CalcularDestino();
+        main.Patrulla = this;
     }
     void Start()
     {
+        
         StartCoroutine(PatrullarYEsperar());
     }
 
-  private IEnumerator PatrullarYEsperar()
+    private IEnumerator PatrullarYEsperar()
     {
         agent.SetDestination(destinoActual);
         yield return null;
     }
-   private void CalcularDestino()
+    private void CalcularDestino()
     {
         destinoActual = listadoPuntos[0];
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            StopAllCoroutines();
+            main.ActivarCombate(other.transform);
+            this.enabled = false;
+        }
     }
 }
