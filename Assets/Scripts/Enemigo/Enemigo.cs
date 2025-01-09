@@ -19,4 +19,10 @@ public class Enemigo : MonoBehaviour
         MainTarget = target;
        combate.enabled = true;
     }
+
+    public void ActivarPatrulla()
+    {
+        combate.enabled = false;
+        patrulla.enabled = true;
+    }
 }

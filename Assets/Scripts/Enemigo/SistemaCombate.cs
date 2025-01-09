@@ -8,6 +8,7 @@ public class SistemaCombate : MonoBehaviour
     [SerializeField] private Enemigo main;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private float velocidadCombate;
+    [SerializeField] private float distanciadCombate;
     private void Awake()
     {
         main.Combate = this;
@@ -16,16 +17,21 @@ public class SistemaCombate : MonoBehaviour
     private void OnEnable()
     {
         agent.speed = velocidadCombate;
+        agent.stoppingDistance = distanciadCombate;
 
     }
-    void Start()
-    {
-       
-    }
+    
     private void Update()
     {
+        if (main.MainTarget1 != null && agent.CalculatePath(main.MainTarget1.position, new NavMeshPath()))
+        {
+            agent.SetDestination(main.MainTarget1.position);
+        }
+        else
+        {
+            main.ActivarPatrulla();
+        }
         
-        agent.SetDestination(main.MainTarget1.position);
     }
 
 }

@@ -1827,7 +1827,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -1883,6 +1883,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (42)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2827,7 +2832,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -2883,6 +2888,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7138,7 +7148,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -7194,6 +7204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7474,7 +7489,7 @@ Transform:
   m_GameObject: {fileID: 271135511}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0412326, y: 1, z: 1}
+  m_LocalPosition: {x: -1.0412326, y: 0.92, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17330,7 +17345,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -17386,6 +17401,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24961,6 +24981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 614064261}
   - component: {fileID: 614064262}
+  - component: {fileID: 614064263}
   m_Layer: 0
   m_Name: Escenario
   m_TagString: Untagged
@@ -25011,7 +25032,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_UseGeometry: 0
-  m_DefaultArea: 0
+  m_DefaultArea: 3
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
@@ -25021,6 +25042,37 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: a066d3ef1f6438e49b8e179cd5c340c5, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!114 &614064263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614064260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: -1372625422
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  m_UseGeometry: 0
+  m_DefaultArea: 3
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: eb05f2a5cb028a144963646ae7e719c9, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &615784936
 GameObject:
@@ -27541,7 +27593,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -27597,6 +27649,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29770,7 +29827,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -29826,6 +29883,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (45)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39392,7 +39454,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -39448,6 +39510,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40179,6 +40246,7 @@ MonoBehaviour:
   main: {fileID: 0}
   agent: {fileID: 0}
   velocidadCombate: 0
+  distanciadCombate: 0
 --- !u!1001 &1014568419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40863,7 +40931,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -40919,6 +40987,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -54558,7 +54631,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -54614,6 +54687,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -55674,7 +55752,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -55730,6 +55808,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -56254,7 +56337,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -56310,6 +56393,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (40)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -56597,7 +56685,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -56653,6 +56741,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -61239,7 +61332,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -61295,6 +61388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -66214,7 +66312,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -66270,6 +66368,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -67312,7 +67415,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -67368,6 +67471,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (43)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -69339,11 +69447,6 @@ Transform:
   - {fileID: 1761863816}
   - {fileID: 809355433}
   - {fileID: 1382485285}
-  - {fileID: 1662994219}
-  - {fileID: 1034721658}
-  - {fileID: 1824644904}
-  - {fileID: 87465955}
-  - {fileID: 63677651}
   - {fileID: 1589772210}
   - {fileID: 808138430}
   - {fileID: 2059372682}
@@ -69358,9 +69461,6 @@ Transform:
   - {fileID: 588657567}
   - {fileID: 1342257366}
   - {fileID: 1326980844}
-  - {fileID: 388978663}
-  - {fileID: 672426169}
-  - {fileID: 1859143249}
   - {fileID: 843928669}
   - {fileID: 49790579}
   - {fileID: 332052756}
@@ -69509,11 +69609,7 @@ Transform:
   - {fileID: 755028484}
   - {fileID: 1586462981}
   - {fileID: 1639523238}
-  - {fileID: 1489069057}
-  - {fileID: 249537635}
-  - {fileID: 988856098}
-  - {fileID: 1504452001}
-  - {fileID: 1518442785}
+  - {fileID: 1938103634}
   - {fileID: 774063883}
   - {fileID: 864683683}
   - {fileID: 711272818}
@@ -69528,9 +69624,6 @@ Transform:
   - {fileID: 415098384}
   - {fileID: 1053671974}
   - {fileID: 1411770306}
-  - {fileID: 1463106710}
-  - {fileID: 2058485330}
-  - {fileID: 736950038}
   - {fileID: 16794225}
   - {fileID: 1527698679}
   - {fileID: 524933290}
@@ -70941,6 +71034,53 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1935724801}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1938103633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1938103634}
+  m_Layer: 7
+  m_Name: sueloscombate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1938103634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938103633}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1824644904}
+  - {fileID: 87465955}
+  - {fileID: 63677651}
+  - {fileID: 388978663}
+  - {fileID: 672426169}
+  - {fileID: 1859143249}
+  - {fileID: 988856098}
+  - {fileID: 1504452001}
+  - {fileID: 1518442785}
+  - {fileID: 1463106710}
+  - {fileID: 2058485330}
+  - {fileID: 736950038}
+  - {fileID: 1662994219}
+  - {fileID: 1034721658}
+  - {fileID: 1489069057}
+  - {fileID: 249537635}
+  m_Father: {fileID: 1909058242}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1938632384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71763,6 +71903,7 @@ MonoBehaviour:
   main: {fileID: 2014756710}
   ruta: {fileID: 1149419233}
   agent: {fileID: 2014756713}
+  velocidadPatrulla: 0
 --- !u!135 &1974150848
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -75070,7 +75211,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1909058242}
+    m_TransformParent: {fileID: 1938103634}
     m_Modifications:
     - target: {fileID: 4470203011123935866, guid: c490143b5e590b3468b07d0662c2da0c,
         type: 3}
@@ -75126,6 +75267,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Suelo (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954511806992595111, guid: c490143b5e590b3468b07d0662c2da0c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

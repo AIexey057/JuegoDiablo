@@ -10,29 +10,41 @@ public class SistemaPatrulla : MonoBehaviour
     [SerializeField] private Transform ruta;
 
     [SerializeField] private NavMeshAgent agent;
+   
+    [SerializeField] private float velocidadPatrulla;
 
     List<Vector3> listadoPuntos = new List<Vector3>();//tiene longitud variable pero un array es fijo no lo puedes cambiar
+    private int indiceActual = -1;  
     private Vector3 destinoActual;
     private void Awake()
     {
+        main.Patrulla = this;
         agent = GetComponent<NavMeshAgent>();
         foreach (Vector3 punto in ruta)
         {
             listadoPuntos.Add(punto);
         }
-        CalcularDestino();
-        main.Patrulla = this;
+        CalcularDestino();     
     }
     void Start()
     {
         
+        
+    }
+    private void OnEnable()
+    {
         StartCoroutine(PatrullarYEsperar());
     }
 
     private IEnumerator PatrullarYEsperar()
     {
-        agent.SetDestination(destinoActual);
-        yield return null;
+        while(true) 
+        {
+            CalcularDestino();
+            agent.SetDestination(destinoActual);
+            yield return null;
+        }
+        
     }
     private void CalcularDestino()
     {
