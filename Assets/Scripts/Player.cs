@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
             {
                 //transform.DOLookAt(npc.transform.position,duracion, AxisConstraint.Y).OnComplete( ()=> LanzarInteraccion(npc));
                 npc.Interactuar(this.transform);
-                ultimoClick = null;
+               
             }
         }
         else if (ultimoClick)
@@ -44,9 +45,10 @@ public class Player : MonoBehaviour
             agent.stoppingDistance = 0f;
         }
     }
-    private void LanzarInteraccion(NPC npc)
+    private void LanzarInteraccion(Iinteractuable iinteractuador)
     {
-        
+        iinteractuador.Interactuar(transform);
+        ultimoClick = null;
     }
     private void Movimiento()
     {
@@ -60,5 +62,10 @@ public class Player : MonoBehaviour
 
             }
         }
+    }
+
+    internal void HacerDanho(float danhoAtaque)
+    {
+        Debug.Log("Me hacen pupa: " + danhoAtaque);
     }
 }

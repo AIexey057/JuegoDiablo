@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPC : MonoBehaviour
+public class NPC : MonoBehaviour,Iinteractuable
 {
     Outline outline;
     [SerializeField] Texture2D CursorInteraccion;
