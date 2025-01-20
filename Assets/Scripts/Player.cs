@@ -7,14 +7,19 @@ using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float distanciaInteraccion;
+    [SerializeField] private float distanciaInteraccion = 2f;
+    [SerializeField] private float distanciaAtaque = 2f;
     [SerializeField] private float duracion;
     
     private Camera cam;
     
     private Transform ultimoClick;
     private NavMeshAgent agent;
-   
+    private Animator anim;
+    private PlayerAnimation playerAnimation;
+
+    public PlayerAnimation PlayerAnimation { get => playerAnimation; set => playerAnimation = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +44,10 @@ public class Player : MonoBehaviour
                 npc.Interactuar(this.transform);
                
             }
+        }
+        else if (ultimoClick && ultimoClick.TryGetComponent(out Enemigo enemigo))
+        {
+
         }
         else if (ultimoClick)
         {
