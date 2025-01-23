@@ -8,6 +8,7 @@ public class SistemaDeDialogos : MonoBehaviour
 {
    
     [SerializeField] private GameObject marcos;
+    [SerializeField] private EventManagerSO eventManager;
     [SerializeField] private TMP_Text textoDialogo;
     [SerializeField] private Transform npcCamera;
     private bool escribiendo;
@@ -82,12 +83,18 @@ public class SistemaDeDialogos : MonoBehaviour
     
     private void TerminarDialogo()
     {
+        Time.timeScale = 1f;
+        
         marcos.SetActive(false);
         StopAllCoroutines();
         indiceFraseActual = 0;
         escribiendo = false;
+        if (dialogoActual.tieneMision)
+        {
+            eventManager.NuevaMision();
+        }
+
         dialogoActual = null;
-        Time.timeScale = 1f;
     } 
     // Start is called before the first frame update
    

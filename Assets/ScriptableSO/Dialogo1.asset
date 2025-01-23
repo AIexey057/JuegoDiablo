@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Dialogo1
   m_EditorClassIdentifier: 
   frases:
-  - Hi there traveler! I can teach you a few things of this dungeon, im a very skilled
-    dungeoner.
-  - I have heard that a creepy monster is waiting at the end of the dungeon, but
-    i can asure you that i will be the one who defeat him.
+  - Hi there traveler! My granny is sick and she can only be saved with a demonic
+    medicine....
+  - To prepare this medicine i need 3 death mushrooms...Cold you pick some of them
+    for me?
   - If I were you, I will get some gear before enter deep in the dungeon, the further
     you get the harder it gets.
   tiempoLetras: 0.02
+  tieneMision: 1
+  textoMision: Consigue 3 setas de la merte (0/3)
