@@ -91,11 +91,11 @@ public class SistemaDeDialogos : MonoBehaviour
         escribiendo = false;
         if (dialogoActual.tieneMision)
         {
-            eventManager.NuevaMision();
+            eventManager.NuevaMision(dialogoActual.mision);
         }
 
         dialogoActual = null;
     } 
-    // Start is called before the first frame update
+    
    
 }
