@@ -19,6 +19,6 @@ MonoBehaviour:
     for me?
   - If I were you, I will get some gear before enter deep in the dungeon, the further
     you get the harder it gets.
-  tiempoLetras: 0.01
+  tiempoLetras: 0.04
   tieneMision: 1
   mision: {fileID: 11400000, guid: 24cfe4f47c99d9c4d9a7da43dcfabed9, type: 2}

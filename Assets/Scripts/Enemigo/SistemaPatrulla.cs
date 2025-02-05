@@ -19,10 +19,9 @@ public class SistemaPatrulla : MonoBehaviour
     private void Awake()
     {
         main.Patrulla = this;
-        agent = GetComponent<NavMeshAgent>();
-        foreach (Vector3 punto in ruta)
+        foreach (Transform punto in ruta)
         {
-            listadoPuntos.Add(punto);
+            listadoPuntos.Add(punto.position);
         }
         CalcularDestino();     
     }
@@ -42,13 +41,19 @@ public class SistemaPatrulla : MonoBehaviour
         {
             CalcularDestino();
             agent.SetDestination(destinoActual);
-            yield return null;
+            yield return new WaitUntil(() => !agent.pathPending && agent.remainingDistance < 0.2f);
+            yield return new WaitForSeconds(1f);
         }
         
     }
     private void CalcularDestino()
     {
-        destinoActual = listadoPuntos[0];
+        indiceActual++;
+        if(indiceActual >= listadoPuntos.Count)
+        {
+            indiceActual = 0;
+        }
+        destinoActual = listadoPuntos[indiceActual];
     }
 
     private void OnTriggerEnter(Collider other)

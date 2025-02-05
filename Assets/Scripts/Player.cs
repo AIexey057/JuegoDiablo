@@ -35,13 +35,12 @@ public class Player : MonoBehaviour
             Movimiento();
         }
        
-        if (ultimoClick && ultimoClick.TryGetComponent(out NPC npc))
+        if (ultimoClick && ultimoClick.TryGetComponent(out Iinteractuable interactuable))
         {
             agent.stoppingDistance = distanciaInteraccion;
             if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
             {
-                //transform.DOLookAt(npc.transform.position,duracion, AxisConstraint.Y).OnComplete( ()=> LanzarInteraccion(npc));
-                //LanzarInteraccion(interactuador);
+                interactuable.Interactuar(transform);
                
             }
         }
