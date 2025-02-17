@@ -6,6 +6,8 @@ public class SistemaMisiones : MonoBehaviour
 {
     [SerializeField] private EventManagerSO eventManager;
     [SerializeField] private ToggleMision[] toggleMision;
+    private bool esperandoParaNuevoDialogo = false;
+
 
     private void OnEnable()
     {
@@ -27,6 +29,7 @@ public class SistemaMisiones : MonoBehaviour
 
     private void ActivarToggleMision(MisionSO mision)
     {
+        if (esperandoParaNuevoDialogo) return;
         toggleMision[mision.indiceMision].TextoMision.text = mision.ordenInicial;
 
         if (mision.repetir)
@@ -34,6 +37,13 @@ public class SistemaMisiones : MonoBehaviour
             toggleMision[mision.indiceMision].TextoMision.text += "(" + mision.estadoActual + "/" + mision.repeticionesTotales + ")";
         }
 
-        toggleMision[mision.indiceMision].gameObject.SetActive(true);    
+        toggleMision[mision.indiceMision].gameObject.SetActive(true);
+        esperandoParaNuevoDialogo = true;
+        StartCoroutine(EsperarAntesDeNuevoDialogo());
+    }
+    private IEnumerator EsperarAntesDeNuevoDialogo()
+    {
+        yield return new WaitForSeconds(1f);
+        esperandoParaNuevoDialogo = false;
     }
 }

@@ -17,7 +17,8 @@ public class Enemigo : MonoBehaviour
     public void ActivarCombate(Transform target)
     {
         MainTarget = target;
-       combate.enabled = true;
+        Patrulla.enabled = false;
+        combate.enabled = true;
     }
 
     public void ActivarPatrulla()

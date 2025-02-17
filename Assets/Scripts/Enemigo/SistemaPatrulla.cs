@@ -35,17 +35,20 @@ public class SistemaPatrulla : MonoBehaviour
         StartCoroutine(PatrullarYEsperar());
     }
 
-    private IEnumerator PatrullarYEsperar()
-    {
-        while(true) 
+  
+        private IEnumerator PatrullarYEsperar()
         {
-            CalcularDestino();
-            agent.SetDestination(destinoActual);
-            yield return new WaitUntil(() => !agent.pathPending && agent.remainingDistance < 0.2f);
-            yield return new WaitForSeconds(1f);
+            while (true)
+            {
+                agent.SetDestination(destinoActual);
+                yield return new WaitUntil(() => !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance);
+                yield return new WaitForSeconds(1f);
+                CalcularDestino(); 
+            }
         }
-        
-    }
+
+
+    
     private void CalcularDestino()
     {
         indiceActual++;
@@ -58,8 +61,9 @@ public class SistemaPatrulla : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
+            Debug.Log("Jugador detectado. Iniciando combate.");
             StopAllCoroutines();
             main.ActivarCombate(other.transform);
             this.enabled = false;

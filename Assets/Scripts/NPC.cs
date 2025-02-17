@@ -24,8 +24,8 @@ public class NPC : MonoBehaviour, Iinteractuable
         // Verificar si ya hay un diálogo en curso
         if (!SistemaDeDialogos.sistema.enDialogo) // Asegurarse de que no hay un diálogo en progreso
         {
-            transform.DOLookAt(interactuador.position, tiempoDuracion, AxisConstraint.Y)
-                     .OnComplete(() => SistemaDeDialogos.sistema.IniciarDialogo(dialogo, cameraPoint));
+            transform.DOLookAt(interactuador.position, tiempoDuracion, AxisConstraint.Y).OnComplete(() => SistemaDeDialogos.sistema.IniciarDialogo(dialogo, cameraPoint));
+
         }
     }
 

@@ -34,6 +34,7 @@ public class SistemaDeDialogos : MonoBehaviour
     // Método para iniciar el diálogo
     public void IniciarDialogo(DialogoSO dialogo, Transform cameraPoint)
     {
+        Debug.Log("Intentando iniciar diálogo. Estado de enDialogo: " + enDialogo);
         if (enDialogo) return;  // Si ya hay un diálogo en curso, no se inicia otro
 
         enDialogo = true;  // Marcamos que estamos en un diálogo
@@ -106,15 +107,17 @@ public class SistemaDeDialogos : MonoBehaviour
         Time.timeScale = 1f;
         marcos.SetActive(false);
         StopAllCoroutines();
-        indiceFraseActual = 0;  // Reiniciamos el índice de frases
+        indiceFraseActual = 0;
         escribiendo = false;
-        enDialogo = false;  // Marcamos que el diálogo ha terminado
+        enDialogo = false;  // IMPORTANTE: Esto evita el reinicio en bucle
+        Debug.Log("Diálogo terminado, enDialogo = " + enDialogo); // Verifica si realmente cambia
 
         if (dialogoActual.tieneMision)
         {
             eventManager.NuevaMision(dialogoActual.mision);
         }
 
-        dialogoActual = null;  // Limpiamos el diálogo actual
+        dialogoActual = null;
     }
+
 }

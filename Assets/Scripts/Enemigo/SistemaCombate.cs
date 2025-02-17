@@ -11,48 +11,65 @@ public class SistemaCombate : MonoBehaviour
     [SerializeField] private float distanciadCombate;
     [SerializeField] private Animator anim;
     [SerializeField] private float danhoAtaque;
+
     private void Awake()
     {
         main.Combate = this;
-
     }
+
     private void OnEnable()
     {
         agent.speed = velocidadCombate;
         agent.stoppingDistance = distanciadCombate;
-
+        agent.isStopped = false; // Asegurar que no esté detenido al iniciar la persecución
     }
 
     private void Update()
     {
-        if (main.MainTarget1 != null && agent.CalculatePath(main.MainTarget1.position, new NavMeshPath()))
+        if (main.MainTarget1 != null)
         {
-            EnfocarObjetivo();
-            agent.SetDestination(main.MainTarget1.position);
-            if(!agent.pathPending && agent.remainingDistance <= distanciadCombate)
+            if (agent.hasPath || agent.pathStatus != NavMeshPathStatus.PathInvalid)
             {
-                anim.SetBool("Attacking" ,true);
+                EnfocarObjetivo();
+                agent.SetDestination(main.MainTarget1.position);
+
+                if (!agent.pathPending && agent.remainingDistance <= distanciadCombate)
+                {
+                    anim.SetBool("Attacking", true);
+                    agent.isStopped = true; // Detenerse antes de atacar
+                }
+                else
+                {
+                    anim.SetBool("Attacking", false);
+                    agent.isStopped = false; // Reanudar movimiento si no está atacando
+                }
             }
         }
         else
         {
             main.ActivarPatrulla();
+            this.enabled = false; // Desactivar combate si el objetivo desaparece
         }
-
     }
+
     private void EnfocarObjetivo()
     {
         Vector3 direccionATarget = (main.MainTarget1.position - transform.position).normalized;
         direccionATarget.y = 0f;
         Quaternion rotacioATarget = Quaternion.LookRotation(direccionATarget);
-        transform.rotation = rotacioATarget;
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotacioATarget, Time.deltaTime * 5f);
     }
+
     private void Atacar()
     {
-        main.MainTarget1.GetComponent<Player>().HacerDanho(danhoAtaque);
+        if (main.MainTarget1 != null)
+        {
+            main.MainTarget1.GetComponent<Player>().HacerDanho(danhoAtaque);
+        }
     }
+
     private void FinAtaque()
     {
-        
+        agent.isStopped = false; // Reanudar movimiento después del ataque
     }
 }
