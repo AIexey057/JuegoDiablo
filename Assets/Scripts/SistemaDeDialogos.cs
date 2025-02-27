@@ -10,8 +10,8 @@ public class SistemaDeDialogos : MonoBehaviour
     [SerializeField] private TMP_Text textoDialogo;
     [SerializeField] private Transform npcCamera;
     private bool escribiendo;
-    private int indiceFraseActual;
-    public bool enDialogo;  // Variable que indica si estamos en un diálogo
+    private int indiceFraseActual = 1;
+    public bool enDialogo;  
 
    private DialogoSO dialogoActual;
 
@@ -22,8 +22,8 @@ public class SistemaDeDialogos : MonoBehaviour
         if (sistema == null)
         {
             sistema = this;
-            DOTween.SetTweensCapacity(500, 50);  // Ajuste de la capacidad de los tweens
-            DontDestroyOnLoad(gameObject.transform.root.gameObject);  // Asegura que no se destruye entre escenas
+            DOTween.SetTweensCapacity(500, 50);  
+            DontDestroyOnLoad(gameObject.transform.root.gameObject);  
         }
         else
         {
@@ -31,13 +31,13 @@ public class SistemaDeDialogos : MonoBehaviour
         }
     }
 
-    // Método para iniciar el diálogo
+    
     public void IniciarDialogo(DialogoSO dialogo, Transform cameraPoint)
     {
         Debug.Log("Intentando iniciar diálogo. Estado de enDialogo: " + enDialogo);
-        if (enDialogo) return;  // Si ya hay un diálogo en curso, no se inicia otro
+        if (enDialogo) return;  
 
-        enDialogo = true;  // Marcamos que estamos en un diálogo
+        enDialogo = true; 
         if (escribiendo)
         {
             StopAllCoroutines();
@@ -48,8 +48,8 @@ public class SistemaDeDialogos : MonoBehaviour
         npcCamera.SetPositionAndRotation(cameraPoint.position, cameraPoint.transform.rotation);
         dialogoActual = dialogo;
         marcos.SetActive(true);
-        indiceFraseActual = 0;  // Comienza desde la primera frase
-        textoDialogo.text = "";  // Limpiamos el texto antes de empezar
+        indiceFraseActual = 0;  
+        textoDialogo.text = "";  
         StartCoroutine(EscribirFrase());
     }
 
@@ -57,7 +57,7 @@ public class SistemaDeDialogos : MonoBehaviour
     {
         escribiendo = true;
 
-        // Limpiamos el texto antes de empezar a escribir la nueva frase
+        
         textoDialogo.text = "";
 
         char[] fraseEnLetras = dialogoActual.frases[indiceFraseActual].ToCharArray();
@@ -65,22 +65,25 @@ public class SistemaDeDialogos : MonoBehaviour
         foreach (char letra in fraseEnLetras)
         {
             textoDialogo.text += letra;
-            yield return new WaitForSecondsRealtime(dialogoActual.tiempoLetras); // Controla la velocidad
+            yield return new WaitForSecondsRealtime(dialogoActual.tiempoLetras); 
         }
 
-        escribiendo = false; // Marca que se terminó de escribir la frase
+        escribiendo = false; 
     }
 
-    // Método para continuar al siguiente diálogo o terminarlo
+
     public void SiguienterFrase()
     {
+        Debug.Log($"Botón presionado, avanzando a la siguiente frase. Índice actual antes de incrementar: {indiceFraseActual}");
+
         if (escribiendo)
         {
-            CompletarFrase(); // Completa la frase actual inmediatamente si se está escribiendo
+            CompletarFrase();
         }
         else
         {
-            indiceFraseActual++;  // Avanza a la siguiente frase
+            indiceFraseActual++;
+            Debug.Log($"Nuevo índice después de incrementar: {indiceFraseActual} / Total frases: {dialogoActual.frases.Length}");
 
             if (indiceFraseActual < dialogoActual.frases.Length)
             {
@@ -88,29 +91,33 @@ public class SistemaDeDialogos : MonoBehaviour
             }
             else
             {
-                TerminarDialogo();  // Si no hay más frases, termina el diálogo
+                Debug.Log("No hay más frases, terminando diálogo.");
+                TerminarDialogo();
             }
         }
     }
 
-    // Completa la frase si está siendo escrita
+
+
     private void CompletarFrase()
     {
-        StopAllCoroutines(); // Detenemos cualquier corutina en ejecución
-        textoDialogo.text = dialogoActual.frases[indiceFraseActual];  // Muestra la frase completa
+        StopAllCoroutines(); 
+        textoDialogo.text = dialogoActual.frases[indiceFraseActual]; 
         escribiendo = false;
     }
 
-    // Método para terminar el diálogo
+
     private void TerminarDialogo()
     {
+        Debug.Log("Ejecutando TerminarDialogo()");
+
         Time.timeScale = 1f;
         marcos.SetActive(false);
         StopAllCoroutines();
-        indiceFraseActual = 0;
         escribiendo = false;
-        enDialogo = false;  // IMPORTANTE: Esto evita el reinicio en bucle
-        Debug.Log("Diálogo terminado, enDialogo = " + enDialogo); // Verifica si realmente cambia
+        enDialogo = false;
+
+        Debug.Log("Diálogo terminado correctamente, enDialogo ahora es " + enDialogo);
 
         if (dialogoActual.tieneMision)
         {
@@ -118,6 +125,8 @@ public class SistemaDeDialogos : MonoBehaviour
         }
 
         dialogoActual = null;
+        indiceFraseActual = 0;  
     }
+
 
 }

@@ -10,7 +10,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float distanciaInteraccion = 2f;
     [SerializeField] private float distanciaAtaque = 2f;
     [SerializeField] private float duracion;
-    
+    public GameObject prefabBola; 
+    public Transform puntoDisparo;
+
     private Camera cam;
     
     private Transform ultimoClick;
