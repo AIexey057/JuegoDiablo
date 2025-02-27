@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Proyectil : MonoBehaviour
 {
-    public float velocidad = 5f;
+    public float velocidad = 3f;
     public int daño = 10;
     public float tiempoDeVida = 5f;
     private Vector3 direccion;

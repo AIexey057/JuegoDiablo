@@ -18,11 +18,11 @@ public class NPC : MonoBehaviour, Iinteractuable
         outline = GetComponent<Outline>();
     }
 
-    // Método que se llama cuando el jugador interactúa con el NPC
+   
     public void Interactuar(Transform interactuador)
     {
-        // Verificar si ya hay un diálogo en curso
-        if (!SistemaDeDialogos.sistema.enDialogo) // Asegurarse de que no hay un diálogo en progreso
+        
+        if (!SistemaDeDialogos.sistema.enDialogo) 
         {
             transform.DOLookAt(interactuador.position, tiempoDuracion, AxisConstraint.Y).OnComplete(() => SistemaDeDialogos.sistema.IniciarDialogo(dialogo, cameraPoint));
 

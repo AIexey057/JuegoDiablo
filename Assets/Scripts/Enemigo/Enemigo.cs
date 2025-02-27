@@ -13,10 +13,10 @@ public class Enemigo : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Verificar si el objeto con el que colisiona es el jugador
+      
         if (other.CompareTag("Player"))
         {
-            // Activar combate cuando el jugador entra en el área del enemigo
+            
             ActivarCombate(other.transform);
         }
     }
