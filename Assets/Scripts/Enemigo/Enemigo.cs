@@ -9,7 +9,7 @@ public class Enemigo : MonoBehaviour
     private SistemaCombate combate;
     private SistemaPatrulla patrulla;
     private Transform MainTarget;
-    public int vida = 20;
+    public int vida = 40;
 
     
 

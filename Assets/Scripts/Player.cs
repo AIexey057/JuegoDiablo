@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float duracion;
     public GameObject prefabBola; 
     public Transform puntoDisparo;
+    public float tiempoEntreDisparos = 1f;
+    private bool puedeDisparar = true;
 
     private Camera cam;
     
@@ -54,7 +56,29 @@ public class Player : MonoBehaviour
         {
             agent.stoppingDistance = 0f;
         }
+        if (Input.GetKeyDown(KeyCode.Alpha1) && puedeDisparar)
+        {
+            Disparar();
+        }
     }
+    void Disparar()
+    {
+        if (prefabBola != null && puntoDisparo != null)
+        {
+            GameObject bola = Instantiate(prefabBola, puntoDisparo.position, Quaternion.identity);
+
+            Vector3 direccionDisparo = new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
+            bola.GetComponent<Proyectil>().ConfigurarDireccion(direccionDisparo);
+
+            puedeDisparar = false; 
+            Invoke("ReiniciarDisparo", tiempoEntreDisparos); 
+        }
+    }
+    void ReiniciarDisparo()
+    {
+        puedeDisparar = true; 
+    }
+
     private void LanzarInteraccion(Iinteractuable iinteractuador)
     {
         iinteractuador.Interactuar(transform);
