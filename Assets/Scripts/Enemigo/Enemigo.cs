@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Enemigo : MonoBehaviour
 {
@@ -11,17 +7,32 @@ public class Enemigo : MonoBehaviour
     private Transform MainTarget;
     public int vida = 40;
 
-    
-
     public SistemaPatrulla Patrulla { get => patrulla; set => patrulla = value; }
     public SistemaCombate Combate { get => combate; set => combate = value; }
     public Transform MainTarget1 { get => MainTarget; }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        // Verificar si el objeto con el que colisiona es el jugador
+        if (other.CompareTag("Player"))
+        {
+            // Activar combate cuando el jugador entra en el área del enemigo
+            ActivarCombate(other.transform);
+        }
+    }
+
     public void ActivarCombate(Transform target)
     {
+        if (target == null)
+        {
+            Debug.LogWarning("El objetivo es null. No se puede activar el combate.");
+            return;
+        }
+
         MainTarget = target;
         Patrulla.enabled = false;
         combate.enabled = true;
+        Debug.Log("Combate activado con objetivo: " + MainTarget.name);
     }
 
     public void ActivarPatrulla()
@@ -29,6 +40,7 @@ public class Enemigo : MonoBehaviour
         combate.enabled = false;
         patrulla.enabled = true;
     }
+
     public void TomarDaño(int cantidad)
     {
         vida -= cantidad;
@@ -39,6 +51,7 @@ public class Enemigo : MonoBehaviour
             Morir();
         }
     }
+
     void Morir()
     {
         Debug.Log("¡Enemigo derrotado!");

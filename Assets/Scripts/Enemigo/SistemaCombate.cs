@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine;
 
 public class SistemaCombate : MonoBehaviour
 {
@@ -21,13 +19,16 @@ public class SistemaCombate : MonoBehaviour
     {
         agent.speed = velocidadCombate;
         agent.stoppingDistance = distanciadCombate;
-        agent.isStopped = false; // Asegurar que no esté detenido al iniciar la persecución
+        agent.isStopped = false; 
     }
 
     private void Update()
     {
         if (main.MainTarget1 != null)
         {
+            // Confirmamos que el objetivo no es null
+            Debug.Log("Objetivo del enemigo: " + main.MainTarget1.name);
+
             if (agent.hasPath || agent.pathStatus != NavMeshPathStatus.PathInvalid)
             {
                 EnfocarObjetivo();
@@ -47,13 +48,17 @@ public class SistemaCombate : MonoBehaviour
         }
         else
         {
+            Debug.Log("El enemigo ha perdido el objetivo o el objetivo es null.");
             main.ActivarPatrulla();
             this.enabled = false; // Desactivar combate si el objetivo desaparece
         }
     }
 
+
     private void EnfocarObjetivo()
     {
+        if (main.MainTarget1 == null) return;
+
         Vector3 direccionATarget = (main.MainTarget1.position - transform.position).normalized;
         direccionATarget.y = 0f;
         Quaternion rotacioATarget = Quaternion.LookRotation(direccionATarget);
@@ -70,6 +75,6 @@ public class SistemaCombate : MonoBehaviour
 
     private void FinAtaque()
     {
-        agent.isStopped = false; // Reanudar movimiento después del ataque
+        agent.isStopped = false; 
     }
 }
